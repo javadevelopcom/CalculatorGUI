@@ -1,8 +1,23 @@
+import com.sun.deploy.panel.JSmartTextArea;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class CalculatorGUI {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+        // применяем системный скин
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         // создаем фрейм и устанавливаем его размер
         JFrame frame = new JFrame("Calculator");
         frame.setVisible(true);
@@ -11,16 +26,22 @@ public class CalculatorGUI {
 
         // создаем панель
         JPanel panel = new JPanel();
-        frame.add(panel);
+
+        panel.setSize(300, 250);
+        panel.setBorder(BorderFactory.createEtchedBorder());
+        frame.getContentPane().add(panel);
 
         // к панели добавляем менеджер GridLayout и устанавливаем размеры таблицы 6x3
         panel.setLayout(new GridLayout(6, 3));
 
-        panel.add(new JTextField("                      0"));
-
+//        panel.add(new JTextField("                      0"));
+        JSmartTextArea display = new JSmartTextArea();
+        panel.add(display);
+        display.setSize(200, 50);
 
         JButton buttonClear = new JButton("C");
         panel.add(buttonClear);
+        buttonClear.setSize(50, 50);
 
         JButton button0 = new JButton("0");
         panel.add(button0);
