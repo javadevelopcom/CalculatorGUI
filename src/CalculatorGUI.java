@@ -17,6 +17,11 @@ public class CalculatorGUI {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
+        // применяем Метал-скин
+//        UIManager.setLookAndFeel(new MetalLookAndFeel());
+//        JFrame.setDefaultLookAndFeelDecorated(true);
+        // применяем кросс-платформенный скин
+//        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
         // создаем фрейм и устанавливаем его размер
         JFrame frame = new JFrame("Calculator");
