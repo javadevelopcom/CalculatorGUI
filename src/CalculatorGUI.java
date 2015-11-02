@@ -24,32 +24,26 @@ public class CalculatorGUI {
 
         // создаем панель
         JPanel panel = new JPanel();
-        panel.setSize(300, 250);
+        panel.setLayout(new GridLayout(6, 3, 6, 6));    // к панели добавляем менеджер GridLayout и устанавливаем размеры таблицы 6x3 и расстояние между кнопками
         panel.setBorder(BorderFactory.createEtchedBorder());
 
 
         // создаем фрейм и устанавливаем его размер
         JFrame frame = new JFrame("Calculator");
-        frame.setSize(350, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame.setResizable(false);             // запрещает изменение размера
         frame.setMinimumSize(new Dimension(200, 250));
-//        frame.setResizable(false);             // запрещает изменение размера
+        frame.setSize(new Dimension(400, 300));
         frame.getContentPane().add(panel);
-
-        // к панели добавляем менеджер GridLayout и устанавливаем размеры таблицы 6x3 и расстояние между кнопками
-        panel.setLayout(new GridLayout(6, 3, 6, 6));
-
-//        panel.add(new JTextField());
 
         JTextField display = new JTextField(15);
         panel.add(display);
         display.setEditable(false);
         display.setFocusable(false);
-//        display.setSize(200, 50);
+        display.setMinimumSize(new Dimension(200, 100));
 
         JButton buttonClear = new JButton("C");
         panel.add(buttonClear);
-        buttonClear.setSize(50, 50);
 
         JButton button0 = new JButton("0");
         panel.add(button0);
