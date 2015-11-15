@@ -1,10 +1,9 @@
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
-public class GraphicalUserInterface extends JTextField {
-    public void gui() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+public class GraphicalUserInterface extends JFrame {
+    public void createGUI() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
 
         // применяем системный СКИН (размещаем в начале кода)
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -27,25 +26,21 @@ public class GraphicalUserInterface extends JTextField {
         // frame.setResizable(false);             // запрещает изменение размера
         frame.setMinimumSize(new Dimension(200, 250));
         frame.setSize(new Dimension(400, 300));
-        frame.getContentPane().add(panel);
 
         // создаем ПОЛЕ для отобажения результата, устанавливаем его параметры и крепим к ПАНЕЛИ
         JTextField display = new JTextField(15);
-        display.setEditable(true);
-        display.setFocusable(true);
+        display.setEditable(false);
+        display.setFocusable(false);
         display.setMinimumSize(new Dimension(200, 100));
-        display.setText("hello");
+        display.setHorizontalAlignment(SwingConstants.RIGHT);
         panel.add(display);
-
 
         // создаем КНОПКИ и крепим к ПАНЕЛИ
         JButton buttonClear = new JButton("C");
         panel.add(buttonClear);
 
         JButton button0 = new JButton("0");
-        button0.setActionCommand("0-Button was Pressed");
         panel.add(button0);
-
 
         JButton button1 = new JButton("1");
         panel.add(button1);
@@ -92,13 +87,9 @@ public class GraphicalUserInterface extends JTextField {
         JButton buttonEqual = new JButton("=");
         panel.add(buttonEqual);
 
-        // ЛИСЕНЕРЫ крепим к КНОПКАМ, методы выносим в отдельный класс
-        ActionListener action = new TestActionListener(this);
-        button0.addActionListener(action);
-
-
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        frame.pack();
         frame.setVisible(true);  // СТАВИТСЯ В КОНЦЕ для правильного отображения содержимого
-
     }
 }
 
